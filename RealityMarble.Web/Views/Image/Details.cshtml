@@ -1,0 +1,29 @@
+﻿@model RealityMarble.Web.Models.ShowImageModel
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Details";
+}
+    <div class="container" align="center">
+    <h3>Rating: @Html.DisplayFor(model => model.Rating)</h3>
+    </div>
+    <div align="center">
+    @Html.ActionLink("Show Author's Gallery", "Gallery", new { userId = Model.UserId }, new { @class = "btn btn-primary" })
+    @Html.Action("RateButton", "Rating")
+    </div>
+    <div class="container" align="center">
+        <br />
+        <img src="@Url.Content(Model.Path)" class="img-responsive" alt="Model.About">
+    </div>
+    <div class="container" align="center">
+        <h4>@Html.DisplayFor(model => model.About)</h4>
+    </div>
+  
+    @if (Model.UserId == User.Identity.GetUserId<int>())
+    {
+     <div class="container" align="center">
+      @Html.ActionLink("Edit Description", "Edit", new { imageId = Model.Id }, new { @class = "btn btn-primary" })
+      @Html.ActionLink("Delete Image", "Delete", new { imageId = Model.Id }, new { @class = "btn btn-danger" })
+     </div>
+    }
+

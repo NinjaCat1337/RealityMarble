@@ -1,0 +1,45 @@
+﻿@model IEnumerable<RealityMarble.BLL.DataTransferObjects.ImageDTO>
+@using Microsoft.AspNet.Identity
+<table class="table">
+    <tr>
+        <th>
+            Author
+        </th>
+        <th>
+            Preview
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.About)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink($" {item.Author}", "Gallery", "Image", new { UserId = item.UserId }, null)
+            </td>
+            <td>
+                    <img width="150" src="@Url.Content(item.Path)" class="img-thumbnail">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.About)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Image", new { imageId = item.Id }, new { @class = "btn btn-primary" })
+                @if (User.IsInRole("Administrator") || User.IsInRole("Moderator") || User.Identity.GetUserId<int>() == item.UserId)
+                {
+                    @Html.ActionLink("Delete", "Delete", "Image", new { id = item.Id }, new { @class = "btn btn-primary" });
+                }
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,5 @@
+﻿@foreach (var item in Model)
+{
+    @Html.ActionLink($" {item.Name}", "Gallery", "Image", new { UserId = item.UserId }, null)
+    <br />
+}

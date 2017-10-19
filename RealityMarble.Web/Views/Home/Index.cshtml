@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="row">
+    <div class="col-md-4">
+        <h2 align="center">Top Images</h2>
+        <div align="center">
+            @Html.Action("TopRatedImages", "Image")
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h2 align="center">Last Images</h2>
+        <div align="center">
+            @Html.Action("LastImages", "Image")
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h2 align="center">Last Authors</h2>
+        <div align="center">
+            @Html.Action("LastAuthors", "UserPage")
+        </div>
+    </div>
+</div>

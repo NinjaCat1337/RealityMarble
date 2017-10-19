@@ -1,0 +1,7 @@
+﻿@foreach (var item in Model)
+{
+ <a href='@Url.Action("Details", "Image", new { imageId = item.Id })'>
+ <img width="150" src="@Url.Content(item.Path)" class="img-thumbnail"></a>
+}
+
+
