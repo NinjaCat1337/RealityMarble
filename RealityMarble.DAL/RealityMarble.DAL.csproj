@@ -62,6 +62,7 @@
     <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Interfaces\IUserPageRepository.cs" />
     <Compile Include="Migrations\201710170452031_Initial.cs" />
     <Compile Include="Migrations\201710170452031_Initial.Designer.cs">
       <DependentUpon>201710170452031_Initial.cs</DependentUpon>

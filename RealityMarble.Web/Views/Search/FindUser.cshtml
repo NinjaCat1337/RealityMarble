@@ -14,9 +14,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default" })
+            <td>               
+                @if (User.IsInRole("Administrator"))
+                {
+                    <div>
+                    @Html.ActionLink("Change Password", "ChangePassword", "Admin", new { userId = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Change UserName", "ChangeUserName", "Admin", new { userId = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Change Email", "ChangeEmail", "Admin", new { userId = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "DeleteUser", "Admin", new { userId = item.Id }, new { @class = "btn btn-danger" })
+                    </div>
+                }
             </td>
         </tr>
     }

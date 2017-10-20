@@ -9,7 +9,7 @@ namespace RealityMarble.Web.Utils
 {
     public static class WebMappers
     {
-        public static ShowImageModel ToShowImageModel(ImageDTO imageDTO)
+        public static ShowImageModel FromImageDTOToShowImageModel(ImageDTO imageDTO)
         {
             return new ShowImageModel
             {
@@ -29,6 +29,33 @@ namespace RealityMarble.Web.Utils
                 Path = model.Path,
                 Rating = model.Rating,
                 UserId = model.UserId
+            };
+        }
+
+        public static ChangePasswordByAdminModel FromUserDTOToChangePasswordByAdminModel(UserDTO model)
+        {
+            return new ChangePasswordByAdminModel
+            {
+                Id = model.Id,
+                Password = model.Password          
+            };
+        }
+
+        public static ChangeUserNameByAdminModel FromUserDTOToChangeUserNameByAdminModel(UserDTO model)
+        {
+            return new ChangeUserNameByAdminModel
+            {
+                Id = model.Id,
+                UserName = model.UserName
+            };
+        }
+
+        public static ChangeEmailByAdminModel FromUserDTOToChangeEmailByAdminModel(UserDTO model)
+        {
+            return new ChangeEmailByAdminModel
+            {
+                Id = model.Id,
+                Email = model.Email
             };
         }
     }

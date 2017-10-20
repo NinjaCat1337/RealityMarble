@@ -14,6 +14,5 @@ namespace RealityMarble.Web.Models
         [Required]
         [Display(Name = "Description")]
         public string About { get; set; }
-
     }
 }

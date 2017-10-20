@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RealityMarble.DAL.Repositories
 {
-    public class UserPageRepository : IRepository<UserPage>
+    public class UserPageRepository : IUserPageRepository
     {
         private EntityDbContext _context;
 
@@ -41,6 +41,15 @@ namespace RealityMarble.DAL.Repositories
         public UserPage Get(int id)
         {
             return _context.UserPages.Find(id);
+        }
+
+        public UserPage GetByUserId(int userId)
+        {
+            var userPage = from up in _context.UserPages
+                           where up.UserId == userId
+                           select up;
+            int userPageId = userPage.Select(x => x.Id).FirstOrDefault();
+            return _context.UserPages.Find(userPageId);
         }
 
         public IEnumerable<UserPage> GetAll()

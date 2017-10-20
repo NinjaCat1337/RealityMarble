@@ -36,7 +36,7 @@
                 @Html.ActionLink("Details", "Details", "Image", new { imageId = item.Id }, new { @class = "btn btn-primary" })
                 @if (User.IsInRole("Administrator") || User.IsInRole("Moderator") || User.Identity.GetUserId<int>() == item.UserId)
                 {
-                    @Html.ActionLink("Delete", "Delete", "Image", new { id = item.Id }, new { @class = "btn btn-primary" });
+                    @Html.ActionLink("Delete", "Delete", "Image", new { imageId = item.Id }, new { @class = "btn btn-primary" });
                 }
             </td>
         </tr>

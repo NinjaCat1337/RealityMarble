@@ -89,5 +89,21 @@ namespace RealityMarble.BLL.Helpers
             };
         }
         #endregion
+
+        #region User
+
+        public static UserDTO ToUserDTO (ApplicationUser user)
+        {
+            return new UserDTO
+            {
+                Id = user.Id,
+                Email = user.Email,
+                UserName = user.UserName, 
+                Password ="",
+                Role = user.Roles.ToString()
+            };
+        }
+
+        #endregion
     }
 }

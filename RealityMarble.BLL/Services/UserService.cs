@@ -65,6 +65,20 @@ namespace RealityMarble.BLL.Services
             return claim;
         }
 
+        public async Task<OperationDetails> ChangePassword (int userId, string oldPassword, string newPassword)
+        {
+            var user = await Database.UserManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                await Database.UserManager.ChangePasswordAsync(userId, oldPassword, newPassword);
+            }
+            else
+            {
+                return new OperationDetails(false, "This users is not exist.", "");
+            }
+            return new OperationDetails(true, "Password changed.", "");
+        }
+
         public int GetUserIdByName(string userName)
         {
             var user = Database.UserManager.FindByName(userName);

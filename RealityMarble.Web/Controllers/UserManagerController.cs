@@ -29,36 +29,5 @@ namespace RealityMarble.Web.Controllers
             return View(allUsers);
         }
 
-        [HttpGet]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(EditUserModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                UserDTO userDTO = new UserDTO
-                {
-                    UserName = model.UserName,
-                    Email = model.Email,
-                    Password = model.Password,
-                    Role = model.Role
-                };
-
-                OperationDetails operationDetails = await userService.Create(userDTO);
-                if (operationDetails.Succedeed)
-                {
-                    UserPageDTO userPageDTO = new UserPageDTO
-                    {
-                        Name = model.UserName,                       
-                    };
-                    await userPageService.UpdateUserPageAsync(userPageDTO);
-                    return View("Users");
-                }
-                else
-                {
-                    ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
-                }
-            }
-            return View(model);
-        }
     }
 }

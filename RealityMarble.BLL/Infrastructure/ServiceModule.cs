@@ -21,6 +21,7 @@ namespace RealityMarble.BLL.Infrastructure
         }
         public override void Load()
         {
+            Bind<IAdminService>().To<AdminService>();
             Bind<IUserService>().To<UserService>();
             Bind<IImageService>().To<ImageService>();
             Bind<IRatingService>().To<RatingService>();

@@ -193,6 +193,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ImageManagerController.cs" />
@@ -203,9 +204,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminModels.cs" />
+    <Compile Include="Models\ChangePasswordModel.cs" />
     <Compile Include="Models\ShowImageModel.cs" />
     <Compile Include="Models\EditImageModel.cs" />
-    <Compile Include="Models\EditUserModel.cs" />
     <Compile Include="Models\CreateImageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RatingModel.cs" />
@@ -286,11 +288,14 @@
     <Content Include="Views\Search\ImageSearch.cshtml" />
     <Content Include="Views\Search\FindImage.cshtml" />
     <Content Include="Views\Search\UserSearch.cshtml" />
+    <Content Include="Views\Admin\ChangePassword.cshtml" />
+    <Content Include="Views\Admin\ChangeUserName.cshtml" />
+    <Content Include="Views\Admin\ChangeEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\" />
-    <Folder Include="Views\UserManager\" />
+    <Folder Include="Views\AccountManager\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -49,7 +49,7 @@ namespace RealityMarble.DAL.Repositories
             }
         }
 
-        public IRepository<UserPage> UserPages
+        public IUserPageRepository UserPages
         { 
             get
             {

@@ -85,7 +85,7 @@ namespace RealityMarble.Web.Controllers
         public ActionResult Details(int imageId)
         {
             var image = imageService.GetImage(imageId);
-            ShowImageModel model = WebMappers.ToShowImageModel(image);
+            ShowImageModel model = WebMappers.FromImageDTOToShowImageModel(image);
             return View(model);
         }
 

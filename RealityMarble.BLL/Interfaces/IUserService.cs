@@ -13,6 +13,7 @@ namespace RealityMarble.BLL.Interfaces
     {
         Task<OperationDetails> Create(UserDTO userDto);
         Task<ClaimsIdentity> Authenticate(UserDTO userDto);
+        Task<OperationDetails> ChangePassword(int userId, string oldPassword, string newPassword);
         Task SetInitialData(List<string> roles);
         int GetUserIdByName(string userName);
         string GetUserNameById(int userId);

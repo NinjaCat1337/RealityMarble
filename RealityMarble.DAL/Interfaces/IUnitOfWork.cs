@@ -12,7 +12,7 @@ namespace RealityMarble.DAL.Interfaces
     {
         ApplicationUserManager UserManager { get; }
         ApplicationRoleManager RoleManager { get; }
-        IRepository<UserPage> UserPages { get; }
+        IUserPageRepository UserPages { get; }
         IRepository<Image> Images { get; }
         IRepository<Rating> Ratings { get; }
         Task SaveAsync();
