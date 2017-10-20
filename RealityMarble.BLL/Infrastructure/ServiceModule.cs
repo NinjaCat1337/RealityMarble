@@ -23,6 +23,7 @@ namespace RealityMarble.BLL.Infrastructure
         {
             Bind<IAdminService>().To<AdminService>();
             Bind<IUserService>().To<UserService>();
+            Bind<IUserManageService>().To<UserManageService>();
             Bind<IImageService>().To<ImageService>();
             Bind<IRatingService>().To<RatingService>();
             Bind<IUserPageService>().To<UserPageService>();

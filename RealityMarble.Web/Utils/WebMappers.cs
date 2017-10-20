@@ -1,6 +1,7 @@
 ﻿using RealityMarble.BLL.DataTransferObjects;
 using RealityMarble.Web.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,6 +21,7 @@ namespace RealityMarble.Web.Utils
                 UserId = imageDTO.UserId
             };
         }
+     
         public static ImageDTO FromShowImageModelToImageDTO(ShowImageModel model)
         {
             return new ImageDTO
@@ -56,6 +58,16 @@ namespace RealityMarble.Web.Utils
             {
                 Id = model.Id,
                 Email = model.Email
+            };
+        }
+
+        public static ShowUserModel FromUserDTOToShowUserModel(UserDTO user)
+        {
+            return new ShowUserModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Name = user.UserName
             };
         }
     }

@@ -6,9 +6,11 @@ using System.Web;
 
 namespace RealityMarble.Web.Models
 {
-    public class SearchRequestModel
+    public class ChangeEmailModel
     {
         [Required]
-        public string SearchRequest { get; set; }
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
     }
 }

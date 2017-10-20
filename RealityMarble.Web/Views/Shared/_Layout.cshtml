@@ -24,25 +24,32 @@
                     <li>@Html.ActionLink("Authors", "UserPages", "UserPage")</li>
                     <li>@Html.ActionLink("Images", "Images", "ImageManager")</li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
                     @if (!User.Identity.IsAuthenticated)
                     {
+                        <ul class="nav navbar-nav navbar-right">
                         <li>@Html.ActionLink("Login", "Login", "Account")</li>
                         <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                        </ul>
                     }
                     else
                     {
-                        <li>
-                            <a>You: @User.Identity.Name</a>
-
-                        </li>
-                        <li>@Html.ActionLink("My Profile", "Gallery", "Image", new { userId = User.Identity.GetUserId<int>() }, null)</li>
-                        <li>@Html.ActionLink("Upload Image", "Create", "Image")</li>
-                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
-                    }
-
-                </ul>
-            </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">You: @User.Identity.Name<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Change Password", "ChangePassword", "UserManage")</li>
+                                    <li>@Html.ActionLink("Change e-mail", "ChangeEmail", "UserManage")</li>
+                                    <li class="divider"></li>
+                                    <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                                </ul>
+                            </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("My Profile", "Gallery", "Image", new { userId = User.Identity.GetUserId<int>() }, null)</li>
+                                <li>@Html.ActionLink("Upload Image", "Create", "Image")</li>
+                            </ul>
+                     }
+              </div>
         </div>
     </div>
     <div class="container body-content">

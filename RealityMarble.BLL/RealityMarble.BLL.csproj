@@ -72,12 +72,14 @@
     <Compile Include="Interfaces\IImageService.cs" />
     <Compile Include="Interfaces\IRatingHelper.cs" />
     <Compile Include="Interfaces\IRatingService.cs" />
+    <Compile Include="Interfaces\IUserManageService.cs" />
     <Compile Include="Interfaces\IUserPageService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\ImageService.cs" />
     <Compile Include="Services\RatingService.cs" />
+    <Compile Include="Services\UserManageService.cs" />
     <Compile Include="Services\UserPageService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>

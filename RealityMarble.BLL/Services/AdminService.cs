@@ -50,6 +50,7 @@ namespace RealityMarble.BLL.Services
             }
             return new OperationDetails(true, "Email changed.", "");
         }
+
         public async Task<OperationDetails> ChangeUserNameByAdminAsync(int userId, string newUserName)
         {
             var user = await Database.UserManager.FindByIdAsync(userId);

@@ -109,16 +109,6 @@ namespace RealityMarble.Web.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public async Task<ActionResult> ChangePassword(ChangePasswordModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                await userService.ChangePassword(model.Id, model.OldPassword, model.NewPassword);
-            }
-            return View(model);
-        }
-
         private async Task SetInitialDataAsync()
         {
             await userService.SetInitialData(new List<string> { "User", "Moderator", "Administrator" });
