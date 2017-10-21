@@ -30,7 +30,7 @@ namespace RealityMarble.Web.Controllers
         [HttpGet]
         public ActionResult LastAuthors()
         {
-            return PartialView(userPageService.GetAllUserPages().OrderByDescending(x => x.Id).Take(20));
+            return PartialView(userPageService.GetLast30Authors());
         }
     }
 }

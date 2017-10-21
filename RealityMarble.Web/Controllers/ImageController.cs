@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNet.Identity;
 using Ninject;
 using RealityMarble.BLL.DataTransferObjects;
 using RealityMarble.BLL.Infrastructure;
@@ -40,7 +41,9 @@ namespace RealityMarble.Web.Controllers
             {
                 ViewData["AuthorName"] = "Emty Gallery";
             }
-            return View("Gallery", imagesByUser);
+            Mapper.Initialize(cfg => { cfg.CreateMap<ImageDTO, ShowImageModel>(); });
+            var imagesModel =  Mapper.Map<IEnumerable<ImageDTO>, List<ShowImageModel>>(imagesByUser);
+            return View("Gallery", imagesModel);
         }
         [Authorize]
         public ActionResult Create()
@@ -92,7 +95,15 @@ namespace RealityMarble.Web.Controllers
         [Authorize]
         public ActionResult Delete(int imageId)
         {
-            imageService.DeleteImageAsync(imageId);
+            var image = imageService.GetImage(imageId);
+            if (image.UserId == User.Identity.GetUserId<int>() || User.IsInRole("Administrator") || User.IsInRole("Moderator"))
+            {
+                imageService.DeleteImageAsync(imageId);
+            }
+            else
+            {
+                return View("AccessDenied");
+            }
             return RedirectToAction("Gallery", new { userId = User.Identity.GetUserId<int>() });
         }
 
@@ -101,6 +112,14 @@ namespace RealityMarble.Web.Controllers
         public ActionResult Edit(int imageId)
         {
             var image = imageService.GetImage(imageId);
+            if (image.UserId == User.Identity.GetUserId<int>() || User.IsInRole("Administrator") || User.IsInRole("Moderator"))
+            {
+                imageService.DeleteImageAsync(imageId);
+            }
+            else
+            {
+                return View("AccessDenied");
+            }
             return View(image);
         }
 
@@ -131,7 +150,7 @@ namespace RealityMarble.Web.Controllers
         [HttpGet]
         public ActionResult LastImages()
         {
-            return PartialView(imageService.GetAllImages().OrderByDescending(x => x.Id).Take(10));
+            return PartialView(imageService.GetLast10Images());
         }
     }
 }

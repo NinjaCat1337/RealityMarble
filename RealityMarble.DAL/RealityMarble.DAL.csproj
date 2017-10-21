@@ -63,14 +63,6 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IUserPageRepository.cs" />
-    <Compile Include="Migrations\201710170452031_Initial.cs" />
-    <Compile Include="Migrations\201710170452031_Initial.Designer.cs">
-      <DependentUpon>201710170452031_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710190006275_Initial1.cs" />
-    <Compile Include="Migrations\201710190006275_Initial1.Designer.cs">
-      <DependentUpon>201710190006275_Initial1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ImageRepository.cs" />
@@ -81,14 +73,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710170452031_Initial.resx">
-      <DependentUpon>201710170452031_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710190006275_Initial1.resx">
-      <DependentUpon>201710190006275_Initial1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

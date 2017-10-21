@@ -67,16 +67,18 @@ namespace RealityMarble.BLL.Services
             Mapper.Initialize(cfg => { cfg.CreateMap<Image, ImageDTO>(); });
             return Mapper.Map<IEnumerable<Image>, List<ImageDTO>>(Database.Images.GetAll());
         }
-        /*
-        public IEnumerable<Image> GetAll()
+        
+
+        public IEnumerable<ImageDTO> GetTop10Images()
         {
-            return Database.Images.GetAll();
+            Mapper.Initialize(cfg => { cfg.CreateMap<Image, ImageDTO>(); });
+            return Mapper.Map<IEnumerable<Image>, List<ImageDTO>>(Database.Images.GetAll(sortByDecimal: x => x.Rating, ascending: false, take: 10));
         }
 
-        public IEnumerable<Image> GetTop10Images()
+        public IEnumerable<ImageDTO> GetLast10Images()
         {
-            return this.GetAll(sortBy: x => x.Rating, ascending: false, take: 10);
-        }
-        */
+            Mapper.Initialize(cfg => { cfg.CreateMap<Image, ImageDTO>(); });
+            return Mapper.Map<IEnumerable<Image>, List<ImageDTO>>(Database.Images.GetAll(sortByInt: x => x.Id, ascending: false, take: 10));
+        }  
     }
 }

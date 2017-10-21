@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace RealityMarble.DAL.Repositories
 {
+
     public class UserPageRepository : IUserPageRepository
     {
         private EntityDbContext _context;
@@ -31,11 +32,6 @@ namespace RealityMarble.DAL.Repositories
             {
                 _context.UserPages.Remove(item);
             }
-        }
-
-        public void Dispose()
-        {
-            _context.Dispose();
         }
 
         public UserPage Get(int id)
@@ -63,11 +59,12 @@ namespace RealityMarble.DAL.Repositories
         }
 
         public IEnumerable<UserPage> GetAll(
-            Expression<Func<UserPage, bool>> where = null,
-            Expression<Func<UserPage, object>> sortBy = null,
-            bool ascending = true,
-            int? skip = null,
-            int? take = null)
+           Expression<Func<UserPage, bool>> where = null,
+           Expression<Func<UserPage, decimal>> sortByDecimal = null,
+           Expression<Func<UserPage, int>> sortByInt = null,
+           bool ascending = true,
+           int? skip = null,
+           int? take = null)
         {
             IQueryable<UserPage> query = _context.Set<UserPage>().AsQueryable();
 
@@ -76,9 +73,14 @@ namespace RealityMarble.DAL.Repositories
                 query = query.Where(where);
             }
 
-            if (sortBy != null)
+            if (sortByDecimal != null)
             {
-                query = ascending ? query.OrderBy(sortBy) : query.OrderByDescending(sortBy);
+                query = ascending ? query.OrderBy(sortByDecimal) : query.OrderByDescending(sortByDecimal);
+            }
+
+            if (sortByInt != null)
+            {
+                query = ascending ? query.OrderBy(sortByInt) : query.OrderByDescending(sortByInt);
             }
 
             if (skip != null)

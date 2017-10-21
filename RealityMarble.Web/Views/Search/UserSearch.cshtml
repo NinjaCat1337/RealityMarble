@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RealityMarble.BLL.DataTransferObjects.UserDTO>
+﻿@model IEnumerable<RealityMarble.Web.Models.ShowUserModel>
 
 <div>
     @using (Ajax.BeginForm("FindUser", "Search", new AjaxOptions
@@ -17,9 +17,9 @@
             <input type="submit" value="Find" />
         </div>
     }
-    <img id="loading1" src="@Url.Content("~/Content/Images/loader.gif")" style="display:none" />
+    <img id="loading1" src="@Url.Content("~/Content/Images/Design/loading.gif")" style="display:none" />
     <div id="loading0" style="display:none; color:Red; font-weight:bold;">
-        <p>Идет загрузка...</p>
+        <p>loading...</p>
     </div>
     <br />
     <div id="results"></div>

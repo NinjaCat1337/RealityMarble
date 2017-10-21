@@ -1,4 +1,6 @@
-﻿using Ninject;
+﻿using AutoMapper;
+using Ninject;
+using RealityMarble.BLL.DataTransferObjects;
 using RealityMarble.BLL.Infrastructure;
 using RealityMarble.BLL.Interfaces;
 using RealityMarble.Web.Models;
@@ -16,11 +18,13 @@ namespace RealityMarble.Web.Controllers
         IKernel ninjectKernel = new StandardKernel(new ServiceModule("RealityMarbleDB"));
         private IUserPageService userPageService;
         private IImageService imageService;
+        private IUserService userService;
 
         public SearchController()
         {
             userPageService = ninjectKernel.Get<IUserPageService>();
             imageService = ninjectKernel.Get<IImageService>();
+            userService = ninjectKernel.Get<IUserService>();
         }
         public ActionResult Search()
         {
@@ -30,13 +34,15 @@ namespace RealityMarble.Web.Controllers
         [HttpPost]
         public ActionResult FindUser(string searchRequest)
         {
-            var allUsers = userPageService.GetAllUserPages();
-            var findedUsers = allUsers.Where(u => u.Name.ToLower().Contains(searchRequest.ToLower())).ToList();
+            var allUsers = userService.GetAllUsers();
+            var findedUsers = allUsers.Where(u => u.UserName.ToLower().Contains(searchRequest.ToLower())).ToList();
             if (findedUsers.Count <= 0)
             {
                 return HttpNotFound();
             }
-            return PartialView(findedUsers);
+            Mapper.Initialize(cfg => { cfg.CreateMap<UserDTO, ShowUserModel>(); });
+            var usersModel = Mapper.Map<IEnumerable<UserDTO>, List<ShowUserModel>>(findedUsers);
+            return PartialView(usersModel);
         }   
         [HttpPost]
         public ActionResult FindImage(string searchRequest)
@@ -47,7 +53,9 @@ namespace RealityMarble.Web.Controllers
             {
                 return HttpNotFound();
             }
-            return PartialView(findedImages);
+            Mapper.Initialize(cfg => { cfg.CreateMap<ImageDTO, ShowImageModel>(); });
+            var imagesModel = Mapper.Map<IEnumerable<ImageDTO>, List<ShowImageModel>>(findedImages);
+            return PartialView(imagesModel);
         }
 
         public ActionResult AutocompleteSearch()

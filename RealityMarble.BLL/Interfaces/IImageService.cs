@@ -15,5 +15,6 @@ namespace RealityMarble.BLL.Interfaces
         Task<OperationDetails> UpdateImageAsync(ImageDTO imageDTO);
         Task<OperationDetails> DeleteImageAsync(int id);
         IEnumerable<ImageDTO> GetAllImages();
+        IEnumerable<ImageDTO> GetLast10Images();
     }
 }

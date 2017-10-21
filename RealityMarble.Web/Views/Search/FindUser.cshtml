@@ -1,9 +1,12 @@
-﻿@model IEnumerable<RealityMarble.BLL.DataTransferObjects.UserPageDTO>
+﻿@model IEnumerable<RealityMarble.Web.Models.ShowUserModel>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
         </th>
         <th></th>
     </tr>
@@ -12,7 +15,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>               
                 @if (User.IsInRole("Administrator"))

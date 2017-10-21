@@ -1,6 +1,7 @@
 ﻿using RealityMarble.BLL.DataTransferObjects;
 using RealityMarble.DAL.Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,7 @@ namespace RealityMarble.BLL.Helpers
                 UserId = image.UserId
             };
         }
+
         public static Image ToImageUpdateAbout(ImageDTO imageDTO)
         {
             return new Image

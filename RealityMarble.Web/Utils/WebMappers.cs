@@ -67,7 +67,7 @@ namespace RealityMarble.Web.Utils
             {
                 Id = user.Id,
                 Email = user.Email,
-                Name = user.UserName
+                UserName = user.UserName
             };
         }
     }

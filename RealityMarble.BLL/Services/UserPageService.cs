@@ -68,5 +68,11 @@ namespace RealityMarble.BLL.Services
             Mapper.Initialize(cfg => { cfg.CreateMap<UserPage, UserPageDTO>(); });
             return Mapper.Map<IEnumerable<UserPage>, List<UserPageDTO>>(Database.UserPages.GetAll());
         }
+
+        public IEnumerable<UserPageDTO> GetLast30Authors()
+        {
+            Mapper.Initialize(cfg => { cfg.CreateMap<UserPage, UserPageDTO>(); });
+            return Mapper.Map<IEnumerable<UserPage>, List<UserPageDTO>>(Database.UserPages.GetAll(sortByInt: x => x.Id, ascending: false, take: 30));
+        }
     }
 }

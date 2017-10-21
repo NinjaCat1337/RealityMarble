@@ -50,7 +50,8 @@ namespace RealityMarble.DAL.Repositories
         }
         public IEnumerable<Image> GetAll(
             Expression<Func<Image, bool>> where = null,
-            Expression<Func<Image, object>> sortBy = null,
+            Expression<Func<Image, decimal>> sortByDecimal = null,
+            Expression<Func<Image, int>> sortByInt = null,
             bool ascending = true,
             int? skip = null,
             int? take = null)
@@ -62,9 +63,14 @@ namespace RealityMarble.DAL.Repositories
                 query = query.Where(where);
             }
 
-            if (sortBy != null)
+            if (sortByDecimal != null)
             {
-                query = ascending ? query.OrderBy(sortBy) : query.OrderByDescending(sortBy);
+                query = ascending ? query.OrderBy(sortByDecimal) : query.OrderByDescending(sortByDecimal);
+            }
+
+            if (sortByInt != null)
+            {
+                query = ascending ? query.OrderBy(sortByInt) : query.OrderByDescending(sortByInt);
             }
 
             if (skip != null)

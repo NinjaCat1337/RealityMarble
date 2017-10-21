@@ -51,7 +51,8 @@ namespace RealityMarble.DAL.Repositories
 
         public IEnumerable<Rating> GetAll(
             Expression<Func<Rating, bool>> where = null,
-            Expression<Func<Rating, object>> sortBy = null,
+            Expression<Func<Rating, decimal>> sortByDecimal = null,
+            Expression<Func<Rating, int>> sortByInt = null,
             bool ascending = true,
             int? skip = null,
             int? take = null)
@@ -63,9 +64,14 @@ namespace RealityMarble.DAL.Repositories
                 query = query.Where(where);
             }
 
-            if (sortBy != null)
+            if (sortByDecimal != null)
             {
-                query = ascending ? query.OrderBy(sortBy) : query.OrderByDescending(sortBy);
+                query = ascending ? query.OrderBy(sortByDecimal) : query.OrderByDescending(sortByDecimal);
+            }
+
+            if (sortByInt != null)
+            {
+                query = ascending ? query.OrderBy(sortByInt) : query.OrderByDescending(sortByInt);
             }
 
             if (skip != null)

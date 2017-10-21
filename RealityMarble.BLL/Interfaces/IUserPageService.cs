@@ -15,5 +15,6 @@ namespace RealityMarble.BLL.Interfaces
         UserPageDTO GetUserPage(int id);
         Task<OperationDetails> DeleteUserPageAsync(int id);
         IEnumerable<UserPageDTO> GetAllUserPages();
+        IEnumerable<UserPageDTO> GetLast30Authors();
     }
 }

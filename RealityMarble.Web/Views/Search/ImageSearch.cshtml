@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RealityMarble.BLL.DataTransferObjects.ImageDTO>
+﻿@model IEnumerable<RealityMarble.Web.Models.ShowImageModel>
 
 <div>
     @using (Ajax.BeginForm("FindImage", "Search", new AjaxOptions
@@ -13,32 +13,22 @@
     }))
     {
         <div align ="center">
-        <input type="text" name="searchRequest" source='@Url.Action("AutocompleteSearch", "Search")' /> 
+        <input type="text" name="searchRequest" /> 
         <input type="submit" value="Find" />
         </div>
     }
-    <img id="loading1" src="@Url.Content("~/Content/Images/loader.gif")" style="display:none" />
-    <div id="loading0" style="display:none; color:Red; font-weight:bold;">
-        <p>Идет загрузка...</p>
+        <div align="center">
+        <img width="150" id="loading" src="@Url.Content("~/Content/Design/loading.gif")" style="display:none;" />
+        <br />
+        </div>
+        <div id="results"></div>
     </div>
-    <br />
-    <div id="results"></div>
-</div>
 
 <script src="@Url.Content("~/scripts/jquery-3.1.0.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/scripts/bootstrap.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery-ui-1.12.0.min.js")" type="text/javascript"></script>
 
-@*for autocomplete*@
-<script type="text/javascript">
-    $(function () {
-        $("[source]").each(function () {
-            var target = $(this);
-            target.autocomplete({ source: target.attr("source") });
-        });
-    });
-</script>
 
 @*for ajax-form*@
 <script type="text/javascript">

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace RealityMarble.DAL.Interfaces
 {
+    
     public interface IUserPageRepository
     {
         UserPage Get(int id);
@@ -16,6 +17,11 @@ namespace RealityMarble.DAL.Interfaces
         void Update(UserPage item);
         void Delete(int id);
         IEnumerable<UserPage> GetAll();
-        IEnumerable<UserPage> GetAll(Expression<Func<UserPage, bool>> exp, Expression<Func<UserPage, object>> obj, bool ascending, int? skip, int? take);
+        IEnumerable<UserPage> GetAll(Expression<Func<UserPage, bool>> where = null,
+           Expression<Func<UserPage, decimal>> sortByDecimal = null,
+           Expression<Func<UserPage, int>> sortByInt = null,
+           bool ascending = true,
+           int? skip = null,
+           int? take = null);
     }
 }
