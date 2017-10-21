@@ -47,6 +47,12 @@ namespace RealityMarble.BLL.Helpers
             await Database.SaveAsync();
             return new OperationDetails(true, "Rating has been updated.", "");
         }
+        /// <summary>
+        /// Users the already rated.
+        /// </summary>
+        /// <param name="imageId">The image identifier.</param>
+        /// <param name="userId">The user identifier.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool UserAlreadyRated(int imageId, int userId)
         {
             var AllRatings = Database.Ratings.GetAll();

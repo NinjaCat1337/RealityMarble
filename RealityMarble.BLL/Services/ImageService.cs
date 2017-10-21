@@ -14,6 +14,10 @@ using System.Threading.Tasks;
 
 namespace RealityMarble.BLL.Services
 {
+    /// <summary>
+    /// Class ImageService.
+    /// </summary>
+    /// <seealso cref="RealityMarble.BLL.Interfaces.IImageService" />
     public class ImageService :IImageService
     {
         IUnitOfWork Database { get; set; }
@@ -23,6 +27,11 @@ namespace RealityMarble.BLL.Services
             Database = unitOfWork;
         }
 
+        /// <summary>
+        /// Creates the image asynchronous.
+        /// </summary>
+        /// <param name="imageDTO">The image dto.</param>
+        /// <returns>Task&lt;OperationDetails&gt;.</returns>
         public async Task<OperationDetails> CreateImageAsync(ImageDTO imageDTO)
         {
             Image image = BLLMappers.ToImage(imageDTO);
@@ -31,6 +40,12 @@ namespace RealityMarble.BLL.Services
             return new OperationDetails(true, "Image has been added.", "");
         }
 
+        /// <summary>
+        /// Gets the image.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>ImageDTO.</returns>
+        /// <exception cref="RealityMarble.BLL.Infrastructure.ValidationException">Can't find a image</exception>
         public ImageDTO GetImage(int id)
         {
             var image = Database.Images.Get(id);
@@ -41,6 +56,11 @@ namespace RealityMarble.BLL.Services
             return BLLMappers.ToImageDTO(image);
         }
 
+        /// <summary>
+        /// update image as an asynchronous operation.
+        /// </summary>
+        /// <param name="imageDTO">The image dto.</param>
+        /// <returns>Task&lt;OperationDetails&gt;.</returns>
         public async Task<OperationDetails> UpdateImageAsync(ImageDTO imageDTO)
         {
             Image image = Database.Images.Get(imageDTO.Id);
@@ -51,6 +71,11 @@ namespace RealityMarble.BLL.Services
             return new OperationDetails(true, "Image has been updated.", "");
         }
 
+        /// <summary>
+        /// delete image as an asynchronous operation.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Task&lt;OperationDetails&gt;.</returns>
         public async Task<OperationDetails> DeleteImageAsync(int id)
         {          
             Image item = Database.Images.Get(id);
@@ -62,19 +87,31 @@ namespace RealityMarble.BLL.Services
             return new OperationDetails(true, "Rating has been deleted.", "");
         }
 
+        /// <summary>
+        /// Gets all images.
+        /// </summary>
+        /// <returns>IEnumerable&lt;ImageDTO&gt;.</returns>
         public IEnumerable<ImageDTO> GetAllImages()
         {
             Mapper.Initialize(cfg => { cfg.CreateMap<Image, ImageDTO>(); });
             return Mapper.Map<IEnumerable<Image>, List<ImageDTO>>(Database.Images.GetAll());
         }
-        
 
+
+        /// <summary>
+        /// Gets the top10 images.
+        /// </summary>
+        /// <returns>IEnumerable&lt;ImageDTO&gt;.</returns>
         public IEnumerable<ImageDTO> GetTop10Images()
         {
             Mapper.Initialize(cfg => { cfg.CreateMap<Image, ImageDTO>(); });
             return Mapper.Map<IEnumerable<Image>, List<ImageDTO>>(Database.Images.GetAll(sortByDecimal: x => x.Rating, ascending: false, take: 10));
         }
 
+        /// <summary>
+        /// Gets the last10 images.
+        /// </summary>
+        /// <returns>IEnumerable&lt;ImageDTO&gt;.</returns>
         public IEnumerable<ImageDTO> GetLast10Images()
         {
             Mapper.Initialize(cfg => { cfg.CreateMap<Image, ImageDTO>(); });

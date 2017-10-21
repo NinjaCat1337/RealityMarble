@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace RealityMarble.BLL.Helpers
 {
+    /// <summary>
+    /// Class BLLMappers.
+    /// </summary>
     public static class BLLMappers
     {
         #region Image

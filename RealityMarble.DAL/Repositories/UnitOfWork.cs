@@ -25,6 +25,10 @@ namespace RealityMarble.DAL.Repositories
             _context = new EntityDbContext(connectionString);
         }
 
+        /// <summary>
+        /// Gets the user manager.
+        /// </summary>
+        /// <value>The user manager.</value>
         public ApplicationUserManager UserManager
         {
             get
@@ -37,6 +41,10 @@ namespace RealityMarble.DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// Gets the role manager.
+        /// </summary>
+        /// <value>The role manager.</value>
         public ApplicationRoleManager RoleManager
         {
             get
@@ -50,6 +58,10 @@ namespace RealityMarble.DAL.Repositories
         }
 
 
+        /// <summary>
+        /// Gets the user pages.
+        /// </summary>
+        /// <value>The user pages.</value>
         public IUserPageRepository UserPages
         { 
             get
@@ -62,6 +74,10 @@ namespace RealityMarble.DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// Gets the images.
+        /// </summary>
+        /// <value>The images.</value>
         public IRepository<Image> Images
         {
             get
@@ -74,6 +90,10 @@ namespace RealityMarble.DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// Gets the ratings.
+        /// </summary>
+        /// <value>The ratings.</value>
         public IRepository<Rating> Ratings
         {
             get
@@ -86,6 +106,10 @@ namespace RealityMarble.DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// save as an asynchronous operation.
+        /// </summary>
+        /// <returns>Task.</returns>
         public async Task SaveAsync()
         {
             await _context.SaveChangesAsync();

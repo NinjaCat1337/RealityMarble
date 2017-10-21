@@ -11,6 +11,11 @@ namespace RealityMarble.Web.Utils
     {
         public const int ImageMinimumBytes = 512;
 
+        /// <summary>
+        /// Determines whether the specified posted file is image.
+        /// </summary>
+        /// <param name="postedFile">The posted file.</param>
+        /// <returns><c>true</c> if the specified posted file is image; otherwise, <c>false</c>.</returns>
         public static bool IsImage(this HttpPostedFileBase postedFile)
         {
             //-------------------------------------------

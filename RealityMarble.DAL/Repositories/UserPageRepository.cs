@@ -58,13 +58,23 @@ namespace RealityMarble.DAL.Repositories
             _context.Entry(item).State = EntityState.Modified;
         }
 
+        /// <summary>
+        /// Gets all.
+        /// </summary>
+        /// <param name="where">The where.</param>
+        /// <param name="sortByDecimal">The sort by decimal.</param>
+        /// <param name="sortByInt">The sort by int.</param>
+        /// <param name="ascending">if set to <c>true</c> [ascending].</param>
+        /// <param name="skip">The skip.</param>
+        /// <param name="take">The take.</param>
+        /// <returns>IEnumerable&lt;UserPage&gt;.</returns>
         public IEnumerable<UserPage> GetAll(
-           Expression<Func<UserPage, bool>> where = null,
-           Expression<Func<UserPage, decimal>> sortByDecimal = null,
-           Expression<Func<UserPage, int>> sortByInt = null,
-           bool ascending = true,
-           int? skip = null,
-           int? take = null)
+                   Expression<Func<UserPage, bool>> where = null,
+                   Expression<Func<UserPage, decimal>> sortByDecimal = null,
+                   Expression<Func<UserPage, int>> sortByInt = null,
+                   bool ascending = true,
+                   int? skip = null,
+                   int? take = null)
         {
             IQueryable<UserPage> query = _context.Set<UserPage>().AsQueryable();
 

@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace RealityMarble.BLL.Services
 {
+    /// <summary>
+    /// Class UserManageService.
+    /// </summary>
+    /// <seealso cref="RealityMarble.BLL.Interfaces.IUserManageService" />
     public class UserManageService :IUserManageService
     {
         IUnitOfWork Database { get; set; }
@@ -18,6 +22,13 @@ namespace RealityMarble.BLL.Services
             Database = uow;
         }
 
+        /// <summary>
+        /// change password as an asynchronous operation.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="oldPassword">The old password.</param>
+        /// <param name="newPassword">The new password.</param>
+        /// <returns>Task&lt;OperationDetails&gt;.</returns>
         public async Task<OperationDetails> ChangePasswordAsync(int userId, string oldPassword, string newPassword)
         {
             var user = await Database.UserManager.FindByIdAsync(userId);
@@ -32,6 +43,12 @@ namespace RealityMarble.BLL.Services
             return new OperationDetails(true, "Password changed.", "");
         }
 
+        /// <summary>
+        /// change email as an asynchronous operation.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="newEmail">The new email.</param>
+        /// <returns>Task&lt;OperationDetails&gt;.</returns>
         public async Task<OperationDetails> ChangeEmailAsync(int userId, string newEmail)
         {
             var user = await Database.UserManager.FindByIdAsync(userId);

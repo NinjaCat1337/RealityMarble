@@ -16,6 +16,10 @@ using static RealityMarble.DAL.Entities.ApplicationUser;
 
 namespace RealityMarble.BLL.Services
 {
+    /// <summary>
+    /// Class UserService.
+    /// </summary>
+    /// <seealso cref="RealityMarble.BLL.Interfaces.IUserService" />
     public class UserService :IUserService
     {
         IUnitOfWork Database { get; set; }
@@ -26,6 +30,11 @@ namespace RealityMarble.BLL.Services
             Mapper.Initialize(cfg => {cfg.CreateMap<ApplicationUser, UserDTO>();});
         }
 
+        /// <summary>
+        /// Creates the specified user dto.
+        /// </summary>
+        /// <param name="userDto">The user dto.</param>
+        /// <returns>Task&lt;OperationDetails&gt;.</returns>
         public async Task<OperationDetails> Create(UserDTO userDto)
         {
             ApplicationUser userByMail = await Database.UserManager.FindByEmailAsync(userDto.Email);
@@ -55,6 +64,11 @@ namespace RealityMarble.BLL.Services
             }
         }
 
+        /// <summary>
+        /// Authenticates the specified user dto.
+        /// </summary>
+        /// <param name="userDto">The user dto.</param>
+        /// <returns>Task&lt;ClaimsIdentity&gt;.</returns>
         public async Task<ClaimsIdentity> Authenticate(UserDTO userDto)
         {
             ClaimsIdentity claim = null;
@@ -65,6 +79,13 @@ namespace RealityMarble.BLL.Services
             return claim;
         }
 
+        /// <summary>
+        /// Changes the password.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="oldPassword">The old password.</param>
+        /// <param name="newPassword">The new password.</param>
+        /// <returns>Task&lt;OperationDetails&gt;.</returns>
         public async Task<OperationDetails> ChangePassword (int userId, string oldPassword, string newPassword)
         {
             var user = await Database.UserManager.FindByIdAsync(userId);
@@ -79,23 +100,42 @@ namespace RealityMarble.BLL.Services
             return new OperationDetails(true, "Password changed.", "");
         }
 
+        /// <summary>
+        /// Gets the name of the user identifier by.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <returns>System.Int32.</returns>
         public int GetUserIdByName(string userName)
         {
             var user = Database.UserManager.FindByName(userName);
             return user.Id;
         }
 
+        /// <summary>
+        /// Gets the user name by identifier.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <returns>System.String.</returns>
         public string GetUserNameById(int userId)
         {
             var user = Database.UserManager.FindById(userId);
             return user.UserName;
         }
 
+        /// <summary>
+        /// Gets all users.
+        /// </summary>
+        /// <returns>IEnumerable&lt;UserDTO&gt;.</returns>
         public IEnumerable<UserDTO> GetAllUsers()
         {
             return Mapper.Map<IEnumerable<ApplicationUser>, List<UserDTO>>(Database.UserManager.Users.ToList());
         }
 
+        /// <summary>
+        /// Sets the initial data.
+        /// </summary>
+        /// <param name="roles">The roles.</param>
+        /// <returns>Task.</returns>
         public async Task SetInitialData(List<string> roles)
         {
             foreach (string roleName in roles)

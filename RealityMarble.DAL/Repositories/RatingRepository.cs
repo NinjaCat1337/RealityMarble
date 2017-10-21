@@ -49,6 +49,16 @@ namespace RealityMarble.DAL.Repositories
             _context.Entry(item).State = EntityState.Modified;
         }
 
+        /// <summary>
+        /// Gets all.
+        /// </summary>
+        /// <param name="where">The where.</param>
+        /// <param name="sortByDecimal">The sort by decimal.</param>
+        /// <param name="sortByInt">The sort by int.</param>
+        /// <param name="ascending">if set to <c>true</c> [ascending].</param>
+        /// <param name="skip">The skip.</param>
+        /// <param name="take">The take.</param>
+        /// <returns>IEnumerable&lt;T&gt;.</returns>
         public IEnumerable<Rating> GetAll(
             Expression<Func<Rating, bool>> where = null,
             Expression<Func<Rating, decimal>> sortByDecimal = null,

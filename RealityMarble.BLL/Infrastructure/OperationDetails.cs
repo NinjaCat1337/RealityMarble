@@ -8,6 +8,12 @@ namespace RealityMarble.BLL.Infrastructure
 {
     public class OperationDetails
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OperationDetails"/> class.
+        /// </summary>
+        /// <param name="succedeed">if set to <c>true</c> [succedeed].</param>
+        /// <param name="message">The message.</param>
+        /// <param name="property">The property.</param>
         public OperationDetails(bool succedeed, string message, string property)
         {
             Succedeed = succedeed;

@@ -13,6 +13,10 @@ using System.Threading.Tasks;
 
 namespace RealityMarble.BLL.Services
 {
+    /// <summary>
+    /// Class RatingService.
+    /// </summary>
+    /// <seealso cref="RealityMarble.BLL.Interfaces.IRatingService" />
     public class RatingService :IRatingService
     {
         IUnitOfWork Database { get; set; }     
@@ -21,6 +25,11 @@ namespace RealityMarble.BLL.Services
         {
             Database = unitOfWork;
         }
+        /// <summary>
+        /// create rating as an asynchronous operation.
+        /// </summary>
+        /// <param name="ratingDTO">The rating dto.</param>
+        /// <returns>Task&lt;OperationDetails&gt;.</returns>
         public async Task<OperationDetails> CreateRatingAsync(RatingDTO ratingDTO)
         {
             Rating rating = BLLMappers.ToRating(ratingDTO);
@@ -29,6 +38,11 @@ namespace RealityMarble.BLL.Services
             return new OperationDetails(true, "Rating has been added.", "");
         }
 
+        /// <summary>
+        /// update rating as an asynchronous operation.
+        /// </summary>
+        /// <param name="ratingDTO">The rating dto.</param>
+        /// <returns>Task&lt;OperationDetails&gt;.</returns>
         public async Task<OperationDetails> UpdateRatingAsync(RatingDTO ratingDTO)
         {
             Rating rating = BLLMappers.ToRating(ratingDTO);
@@ -41,6 +55,12 @@ namespace RealityMarble.BLL.Services
             return new OperationDetails(true, "Rating has been added.", "");
         }
 
+        /// <summary>
+        /// Gets the rating.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>RatingDTO.</returns>
+        /// <exception cref="RealityMarble.BLL.Infrastructure.ValidationException">Can't find a rating value</exception>
         public RatingDTO GetRating(int id)
         {
             var rating = Database.Ratings.Get(id);
@@ -51,6 +71,11 @@ namespace RealityMarble.BLL.Services
             return BLLMappers.ToRatingDTO(rating);
         }
 
+        /// <summary>
+        /// delete rating as an asynchronous operation.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Task&lt;OperationDetails&gt;.</returns>
         public async Task<OperationDetails> DeleteRatingAsync(int id)
         {
             Rating item = Database.Ratings.Get(id);
@@ -62,6 +87,10 @@ namespace RealityMarble.BLL.Services
             return new OperationDetails(true, "Rating has been added.", "");
         }
 
+        /// <summary>
+        /// Gets all ratings.
+        /// </summary>
+        /// <returns>IEnumerable&lt;RatingDTO&gt;.</returns>
         public IEnumerable<RatingDTO> GetAllRatings()
         {
             Mapper.Initialize(cfg => { cfg.CreateMap<Rating, RatingDTO>(); });
