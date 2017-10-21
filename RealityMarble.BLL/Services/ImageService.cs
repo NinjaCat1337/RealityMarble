@@ -99,23 +99,26 @@ namespace RealityMarble.BLL.Services
 
 
         /// <summary>
-        /// Gets the top10 images.
+        /// Gets the top images.
         /// </summary>
+        /// <param name="count">The count.</param>
         /// <returns>IEnumerable&lt;ImageDTO&gt;.</returns>
-        public IEnumerable<ImageDTO> GetTop10Images()
+        public IEnumerable<ImageDTO> GetTopImages(int count)
         {
             Mapper.Initialize(cfg => { cfg.CreateMap<Image, ImageDTO>(); });
-            return Mapper.Map<IEnumerable<Image>, List<ImageDTO>>(Database.Images.GetAll(sortByDecimal: x => x.Rating, ascending: false, take: 10));
+            return Mapper.Map<IEnumerable<Image>, List<ImageDTO>>(Database.Images.GetAll(sortByDecimal: x => x.Rating, ascending: false, take: count));
         }
 
+
         /// <summary>
-        /// Gets the last10 images.
+        /// Gets the last images.
         /// </summary>
+        /// <param name="count">The count.</param>
         /// <returns>IEnumerable&lt;ImageDTO&gt;.</returns>
-        public IEnumerable<ImageDTO> GetLast10Images()
+        public IEnumerable<ImageDTO> GetLastImages(int count)
         {
             Mapper.Initialize(cfg => { cfg.CreateMap<Image, ImageDTO>(); });
-            return Mapper.Map<IEnumerable<Image>, List<ImageDTO>>(Database.Images.GetAll(sortByInt: x => x.Id, ascending: false, take: 10));
+            return Mapper.Map<IEnumerable<Image>, List<ImageDTO>>(Database.Images.GetAll(sortByInt: x => x.Id, ascending: false, take: count));
         }  
     }
 }

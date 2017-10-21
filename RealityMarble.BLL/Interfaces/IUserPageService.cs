@@ -42,10 +42,12 @@ namespace RealityMarble.BLL.Interfaces
         /// </summary>
         /// <returns>IEnumerable&lt;UserPageDTO&gt;.</returns>
         IEnumerable<UserPageDTO> GetAllUserPages();
+
         /// <summary>
-        /// Gets the last30 authors.
+        /// Gets the last authors.
         /// </summary>
+        /// <param name="count">The count.</param>
         /// <returns>IEnumerable&lt;UserPageDTO&gt;.</returns>
-        IEnumerable<UserPageDTO> GetLast30Authors();
+        IEnumerable<UserPageDTO> GetLastAuthors(int count);
     }
 }

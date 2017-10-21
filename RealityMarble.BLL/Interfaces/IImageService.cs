@@ -43,9 +43,16 @@ namespace RealityMarble.BLL.Interfaces
         /// <returns>IEnumerable&lt;ImageDTO&gt;.</returns>
         IEnumerable<ImageDTO> GetAllImages();
         /// <summary>
-        /// Gets the last10 images.
+        /// Gets the last images.
         /// </summary>
+        /// <param name="count">The count.</param>
         /// <returns>IEnumerable&lt;ImageDTO&gt;.</returns>
-        IEnumerable<ImageDTO> GetLast10Images();
+        IEnumerable<ImageDTO> GetLastImages(int count);
+        /// <summary>
+        /// Gets the top images.
+        /// </summary>
+        /// <param name="count">The count.</param>
+        /// <returns>IEnumerable&lt;ImageDTO&gt;.</returns>
+        IEnumerable<ImageDTO> GetTopImages(int count);
     }
 }

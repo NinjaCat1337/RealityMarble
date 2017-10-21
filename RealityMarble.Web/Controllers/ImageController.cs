@@ -143,14 +143,12 @@ namespace RealityMarble.Web.Controllers
         [HttpGet]
         public ActionResult TopRatedImages()
         {
-            var AllImages = imageService.GetAllImages();
-            var topImages = AllImages.OrderByDescending(im => im.Rating).Take(10);
-            return PartialView(topImages);
+            return PartialView(imageService.GetTopImages(10));
         }
         [HttpGet]
         public ActionResult LastImages()
         {
-            return PartialView(imageService.GetLast10Images());
+            return PartialView(imageService.GetLastImages(10));
         }
     }
 }
