@@ -106,7 +106,7 @@ namespace RealityMarble.BLL.Services
         public IEnumerable<ImageDTO> GetTopImages(int count)
         {
             Mapper.Initialize(cfg => { cfg.CreateMap<Image, ImageDTO>(); });
-            return Mapper.Map<IEnumerable<Image>, List<ImageDTO>>(Database.Images.GetAll(sortByDecimal: x => x.Rating, ascending: true, take: count));
+            return Mapper.Map<IEnumerable<Image>, List<ImageDTO>>(Database.Images.GetAll(sortByDecimal: x => x.Rating, ascending: false, take: count));
         }
 
 
