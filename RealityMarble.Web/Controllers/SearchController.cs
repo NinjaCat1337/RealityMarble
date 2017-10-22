@@ -57,10 +57,5 @@ namespace RealityMarble.Web.Controllers
             var imagesModel = Mapper.Map<IEnumerable<ImageDTO>, List<ShowImageModel>>(findedImages);
             return PartialView(imagesModel);
         }
-
-        public ActionResult AutocompleteSearch()
-        {
-            return Json(JsonRequestBehavior.AllowGet);
-        }
     }
 }
