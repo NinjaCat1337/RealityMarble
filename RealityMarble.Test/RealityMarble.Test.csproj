@@ -63,8 +63,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ImageFunctionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RatingHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -73,6 +73,10 @@
     <ProjectReference Include="..\RealityMarble.BLL\RealityMarble.BLL.csproj">
       <Project>{3970ffdf-6671-4725-a2c9-5a472438e419}</Project>
       <Name>RealityMarble.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RealityMarble.DAL\RealityMarble.DAL.csproj">
+      <Project>{61d2e452-13fa-4e19-bf63-db36bee07c49}</Project>
+      <Name>RealityMarble.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\RealityMarble.Web\RealityMarble.Web.csproj">
       <Project>{683a11c1-ed2c-4683-a799-c6abe10566ee}</Project>
