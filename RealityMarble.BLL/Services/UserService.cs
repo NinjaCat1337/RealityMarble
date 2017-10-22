@@ -80,27 +80,6 @@ namespace RealityMarble.BLL.Services
         }
 
         /// <summary>
-        /// Changes the password.
-        /// </summary>
-        /// <param name="userId">The user identifier.</param>
-        /// <param name="oldPassword">The old password.</param>
-        /// <param name="newPassword">The new password.</param>
-        /// <returns>Task&lt;OperationDetails&gt;.</returns>
-        public async Task<OperationDetails> ChangePassword (int userId, string oldPassword, string newPassword)
-        {
-            var user = await Database.UserManager.FindByIdAsync(userId);
-            if (user != null)
-            {
-                await Database.UserManager.ChangePasswordAsync(userId, oldPassword, newPassword);
-            }
-            else
-            {
-                return new OperationDetails(false, "This users is not exist.", "");
-            }
-            return new OperationDetails(true, "Password changed.", "");
-        }
-
-        /// <summary>
         /// Gets the name of the user identifier by.
         /// </summary>
         /// <param name="userName">Name of the user.</param>

@@ -27,14 +27,6 @@ namespace RealityMarble.BLL.Interfaces
         /// <returns>Task&lt;ClaimsIdentity&gt;.</returns>
         Task<ClaimsIdentity> Authenticate(UserDTO userDto);
         /// <summary>
-        /// Changes the password.
-        /// </summary>
-        /// <param name="userId">The user identifier.</param>
-        /// <param name="oldPassword">The old password.</param>
-        /// <param name="newPassword">The new password.</param>
-        /// <returns>Task&lt;OperationDetails&gt;.</returns>
-        Task<OperationDetails> ChangePassword(int userId, string oldPassword, string newPassword);
-        /// <summary>
         /// Sets the initial data.
         /// </summary>
         /// <param name="roles">The roles.</param>
