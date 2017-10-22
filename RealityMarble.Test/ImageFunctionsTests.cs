@@ -24,7 +24,7 @@ namespace RealityMarble.Test
             var mock = new Mock<ShowImageModel>();
             mock.Setup(m => m).Returns(new ShowImageModel { About = "about", Author="author", Id=1, Path="path", Rating = 10, UserId = 1 });
             ImageController imageController = new ImageController();
-            imageController.Create(mock.Object);
+            //imageController.Create(mock.Object);
         }
     }
 }
