@@ -112,15 +112,22 @@ namespace RealityMarble.Web.Controllers
         public ActionResult Edit(int imageId)
         {
             var image = imageService.GetImage(imageId);
-            if (image.UserId == User.Identity.GetUserId<int>() || User.IsInRole("Administrator") || User.IsInRole("Moderator"))
+            if (image != null)
             {
-                imageService.DeleteImageAsync(imageId);
+                if (image.UserId == User.Identity.GetUserId<int>() || User.IsInRole("Administrator") || User.IsInRole("Moderator"))
+                {
+                    imageService.DeleteImageAsync(imageId);
+                }
+                else
+                {
+                    return View("AccessDenied");
+                }
+                return View(image);
             }
             else
             {
-                return View("AccessDenied");
+                return HttpNotFound();
             }
-            return View(image);
         }
 
         [Authorize]
