@@ -27,8 +27,15 @@ namespace RealityMarble.Web.Controllers
         public async Task<ActionResult> ChangePassword(int userId)
         {
             var user = await adminService.GetUserByIdAsync(userId);
-            var model = WebMappers.FromUserDTOToChangePasswordByAdminModel(user);
-            return View(model);
+            if (user != null)
+            {
+                var model = WebMappers.FromUserDTOToChangePasswordByAdminModel(user);
+                return View(model);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         [HttpPost]
@@ -45,8 +52,15 @@ namespace RealityMarble.Web.Controllers
         public async Task<ActionResult> ChangeUserName(int userId)
         {
             var user = await adminService.GetUserByIdAsync(userId);
-            var model = WebMappers.FromUserDTOToChangeUserNameByAdminModel(user);
-            return View(model);
+            if (user != null)
+            {
+                var model = WebMappers.FromUserDTOToChangeUserNameByAdminModel(user);
+                return View(model);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         [HttpPost]
@@ -63,8 +77,15 @@ namespace RealityMarble.Web.Controllers
         public async Task<ActionResult> ChangeEmail(int userId)
         {
             var user = await adminService.GetUserByIdAsync(userId);
-            var model = WebMappers.FromUserDTOToChangeEmailByAdminModel(user);
-            return View(model);
+            if (user != null)
+            {
+                var model = WebMappers.FromUserDTOToChangeEmailByAdminModel(user);
+                return View(model);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         [HttpPost]
