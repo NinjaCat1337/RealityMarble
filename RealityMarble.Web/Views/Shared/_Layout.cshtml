@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Reality Marble</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/modernizr")   
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -39,6 +39,7 @@
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Change Password", "ChangePassword", "UserManage")</li>
                                 <li>@Html.ActionLink("Change e-mail", "ChangeEmail", "UserManage")</li>
+                                <li>@Html.ActionLink("Messages", "Conversations", "Message", new { receiverId = User.Identity.GetUserId<int>() }, null)</li>
                                 <li class="divider"></li>
                                 <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
                             </ul>

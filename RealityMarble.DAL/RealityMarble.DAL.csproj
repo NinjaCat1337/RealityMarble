@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Image.cs" />
+    <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Rating.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserPage.cs" />
@@ -63,9 +64,22 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IUserPageRepository.cs" />
+    <Compile Include="Migrations\201808251745575_Initial.cs" />
+    <Compile Include="Migrations\201808251745575_Initial.Designer.cs">
+      <DependentUpon>201808251745575_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809282257476_Initial1.cs" />
+    <Compile Include="Migrations\201809282257476_Initial1.Designer.cs">
+      <DependentUpon>201809282257476_Initial1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809282349162_Initial2.cs" />
+    <Compile Include="Migrations\201809282349162_Initial2.Designer.cs">
+      <DependentUpon>201809282349162_Initial2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ImageRepository.cs" />
+    <Compile Include="Repositories\MessageRepository.cs" />
     <Compile Include="Repositories\RatingRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Repositories\UserPageRepository.cs" />
@@ -73,6 +87,17 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808251745575_Initial.resx">
+      <DependentUpon>201808251745575_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809282257476_Initial1.resx">
+      <DependentUpon>201809282257476_Initial1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809282349162_Initial2.resx">
+      <DependentUpon>201809282349162_Initial2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

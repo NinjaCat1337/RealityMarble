@@ -16,10 +16,12 @@ namespace RealityMarble.DAL.Entities
     {
         public virtual ICollection<Image> Images { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
+        public virtual ICollection<Message> Messages { get; set; }
         public ApplicationUser()
         {
             Images = new List<Image>();
             Ratings = new List<Rating>();
+            Messages = new List<Message>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(ApplicationUserManager manager)

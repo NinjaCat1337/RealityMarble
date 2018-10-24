@@ -18,6 +18,7 @@ namespace RealityMarble.DAL.Essence
         public IDbSet<Image> Images { get; set; }
         public IDbSet<Rating> Ratings { get; set; }
         public IDbSet<UserPage> UserPages { get; set; }
+        public IDbSet<Message> Messages { get; set; }
     }
 
     public class EntityContextFactory : IDbContextFactory<EntityDbContext>

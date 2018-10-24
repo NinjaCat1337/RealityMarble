@@ -15,6 +15,7 @@ namespace RealityMarble.DAL.Interfaces
         IUserPageRepository UserPages { get; }
         IRepository<Image> Images { get; }
         IRepository<Rating> Ratings { get; }
+        IRepository<Message> Messages { get; }
         Task SaveAsync();
     }
 }

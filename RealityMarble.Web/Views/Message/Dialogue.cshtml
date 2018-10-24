@@ -1,0 +1,31 @@
+﻿@model IEnumerable<RealityMarble.Web.Models.ShowMessageModel>
+@using RealityMarble.Web.Models
+
+@{
+    ViewBag.Title = "Dialogue";
+}
+@using Microsoft.AspNet.Identity
+
+<link rel="Stylesheet" href="@Href("~/Content/messages-style.css")" />
+
+@Html.ActionLink("Back", "Conversations", new { receiverId = User.Identity.GetUserId<int>() }, new { @class = "btn btn-primary" })
+
+<div class="messages-field">
+@foreach (var item in Model)
+{
+
+    <div class="messages-container">
+        <div class="message-box">
+            @Html.Action("GetUserNameById", new { userId = item.SenderUserId })
+            <br />
+            @Html.DisplayFor(modelItem => item.Date)
+            <br />
+            @Html.DisplayFor(modelItem => item.Text)
+            <br />
+        </div>
+    </div> 
+}
+
+@Html.Partial("Send", new SendMessageModel { });
+</div>
+

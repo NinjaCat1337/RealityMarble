@@ -19,6 +19,7 @@ namespace RealityMarble.DAL.Repositories
         private ImageRepository _imageRepository;
         private RatingRepository _ratingRepository;
         private UserPageRepository _userPageRepository;
+        private MessageRepository _messageRepository;
 
         public UnitOfWork(string connectionString)
         {
@@ -110,6 +111,18 @@ namespace RealityMarble.DAL.Repositories
         /// save as an asynchronous operation.
         /// </summary>
         /// <returns>Task.</returns>
+        /// 
+        public IRepository<Message> Messages
+        {
+            get
+            {
+                if (_messageRepository == null)
+                {
+                    _messageRepository = new MessageRepository(_context);
+                }
+                return _messageRepository;
+            }
+        }
         public async Task SaveAsync()
         {
             await _context.SaveChangesAsync();

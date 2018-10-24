@@ -26,6 +26,7 @@ namespace RealityMarble.BLL.Infrastructure
             Bind<IUserManageService>().To<UserManageService>();
             Bind<IImageService>().To<ImageService>();
             Bind<IRatingService>().To<RatingService>();
+            Bind<IMessageService>().To<MessageService>();
             Bind<IUserPageService>().To<UserPageService>();
             Bind<IRatingHelper>().To<RatingHelper>();
             Bind<IUnitOfWork>().ToMethod(x => new UnitOfWork(connectionString));

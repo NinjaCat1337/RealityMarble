@@ -1,0 +1,35 @@
+﻿@model IEnumerable<RealityMarble.Web.Models.ShowSendersModel>
+
+@{
+    ViewBag.Title = "Conversations";
+}
+
+@using Microsoft.AspNet.Identity
+
+<link rel="stylesheet" type="text/css" href="~/Content/messages-style.css" />
+<script src="@Url.Content("~/scripts/jquery-3.1.0.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/scripts/bootstrap.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.12.0.min.js")" type="text/javascript"></script>
+
+<h2>Conversations</h2>
+
+<p>
+    @Html.ActionLink("Send Message", "Send")
+</p>
+
+    @foreach (var item in Model)
+    {
+            <div id ="dialogues-container"class="messages-container">
+                <div class="message-box color1" style="cursor: pointer;">
+                    @Html.Action("GetUserNameById", new { userId = item.SenderUserId })
+                    <br />
+                    @Html.DisplayFor(modelItem => item.Date)
+                    <br />
+                    @Html.DisplayFor(modelItem => item.Text)
+                    <br />
+                    @Html.ActionLink("Check", "Dialogue", new { receiverId = item.ReceiverUserId, senderId = item.SenderUserId })
+                    
+            </div>
+        </div> 
+    }

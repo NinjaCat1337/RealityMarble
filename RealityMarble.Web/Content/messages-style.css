@@ -1,0 +1,25 @@
+﻿.messages-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: lightgrey;
+}
+
+.message-box {
+    text-align: left;
+    font-size: 1.1em;
+    padding: 20px;
+    border: 1px solid black;   
+}
+.messages-field {
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: lightgrey;
+}
+.text-field {
+    margin-left: 5%;
+    margin-right: 15%;
+    min-width: 70%;
+    resize: none;
+}

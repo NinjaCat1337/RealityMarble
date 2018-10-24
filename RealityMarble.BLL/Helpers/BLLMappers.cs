@@ -110,5 +110,41 @@ namespace RealityMarble.BLL.Helpers
         }
 
         #endregion
+
+        #region Message
+
+        public static Message ToMessage(MessageDTO messageDTO)
+        {
+            return new Message
+            {
+                Id = messageDTO.Id,
+                Date = messageDTO.Date,
+                Text = messageDTO.Text,
+                ReceiverUserId = messageDTO.ReceiverUserId,
+                SenderUserId = messageDTO.SenderUserId
+            };
+        }
+        public static MessageDTO ToMessageDTO(Message message)
+        {
+            return new MessageDTO
+            {
+                Id = message.Id,
+                Date = message.Date,
+                Text = message.Text,
+                ReceiverUserId = message.ReceiverUserId,
+                SenderUserId = message.SenderUserId,
+            };
+        }
+
+        public static Message ToMessageEditMessageText(MessageDTO messageDTO)
+        {
+            return new Message
+            {
+                Id = messageDTO.Id,
+                Text = messageDTO.Text
+            };
+        }
+
+        #endregion
     }
 }

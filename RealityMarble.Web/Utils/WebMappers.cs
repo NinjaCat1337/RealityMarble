@@ -70,5 +70,14 @@ namespace RealityMarble.Web.Utils
                 UserName = user.UserName
             };
         }
+
+        public static ShowMessageModel FromMessageDTOToShowMessageModel (MessageDTO message)
+        {
+            return new ShowMessageModel
+            {
+                Date = message.Date.ToShortDateString() + "; " + message.Date.ToShortTimeString(),
+                Text = message.Text
+            };
+        }
     }
 }
